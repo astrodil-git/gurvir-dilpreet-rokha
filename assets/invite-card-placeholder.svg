@@ -1,0 +1,11 @@
+<svg width="1200" height="1800" viewBox="0 0 1200 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1800" fill="#F8F3EA"/>
+  <rect x="56" y="56" width="1088" height="1688" rx="32" fill="#FDFBF6" stroke="#12305A" stroke-opacity="0.18" stroke-width="4"/>
+  <path d="M146 215C228.833 167.667 327.4 144 441.7 144C613.4 144 665 311 821 311C925 311 1002 280 1052 218" stroke="#12305A" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1045 1577C962.167 1624.33 863.6 1648 749.3 1648C577.6 1648 526 1481 370 1481C266 1481 189 1512 139 1574" stroke="#12305A" stroke-opacity="0.12" stroke-width="8" stroke-linecap="round"/>
+  <text fill="#12305A" xml:space="preserve" style="white-space: pre" font-family="Georgia, serif" font-size="44" letter-spacing="0.22em"><tspan x="377" y="443.08">YOUR INVITE CARD</tspan></text>
+  <text fill="#12305A" fill-opacity="0.76" xml:space="preserve" style="white-space: pre" font-family="Georgia, serif" font-size="112"><tspan x="365" y="738.305">Replace this</tspan></text>
+  <text fill="#12305A" fill-opacity="0.76" xml:space="preserve" style="white-space: pre" font-family="Georgia, serif" font-size="112"><tspan x="407" y="868.305">with your</tspan></text>
+  <text fill="#12305A" fill-opacity="0.76" xml:space="preserve" style="white-space: pre" font-family="Georgia, serif" font-size="112"><tspan x="296" y="998.305">Canva export</tspan></text>
+  <text fill="#12305A" fill-opacity="0.6" xml:space="preserve" style="white-space: pre" font-family="Arial, sans-serif" font-size="34"><tspan x="262" y="1165.38">Save it as assets/invite-card.jpg or assets/invite-card.png</tspan></text>
+</svg>
