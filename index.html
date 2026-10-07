@@ -368,7 +368,7 @@
 
 </section>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1020,&quot;height&quot;:1200},&quot;arrangePhotos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Photos&quot;},&quot;heroX&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:54,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:1,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cover photo&quot;},&quot;heroY&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:30,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:1,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cover photo&quot;},&quot;heroZoom&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cover photo&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1020,&quot;height&quot;:1200},&quot;arrangePhotos&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Photos&quot;},&quot;heroX&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:40,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:1,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cover photo&quot;},&quot;heroY&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:30,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:1,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cover photo&quot;},&quot;heroZoom&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:2.5,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cover photo&quot;}}">
 class Component extends DCLogic {
   state = { a: "invite", b: "invite", now: Date.now() };
 
@@ -466,7 +466,7 @@ class Component extends DCLogic {
           .then(() => this.setState({ rsvpBusy: false, rsvpSent: true }))
           .catch(() => this.setState({ rsvpBusy: false, rsvpError: true }));
       },
-      heroPos: `${this.props.heroX ?? 50}% ${this.props.heroY ?? 35}%`, heroZoom: this.props.heroZoom ?? 1,
+      heroPos: `${this.props.heroX ?? 40}% ${this.props.heroY ?? 35}%`, heroZoom: this.props.heroZoom ?? 1,
       openR0: !!(this.state.openR||{})[0], signR0: (this.state.openR||{})[0] ? "−" : "+", toggleR0: () => this.setState(s => ({ openR: { ...(s.openR||{}), [0]: !(s.openR||{})[0] } })),
       openR1: !!(this.state.openR||{})[1], signR1: (this.state.openR||{})[1] ? "−" : "+", toggleR1: () => this.setState(s => ({ openR: { ...(s.openR||{}), [1]: !(s.openR||{})[1] } })),
       openR2: !!(this.state.openR||{})[2], signR2: (this.state.openR||{})[2] ? "−" : "+", toggleR2: () => this.setState(s => ({ openR: { ...(s.openR||{}), [2]: !(s.openR||{})[2] } })),
