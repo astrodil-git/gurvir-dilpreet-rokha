@@ -33,6 +33,7 @@
         <button type="button" onClick="{{ goScheduleB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bScheduleEdge }}; background:{{ bScheduleBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bScheduleColor }}; cursor:pointer">Program</button>
         <button type="button" onClick="{{ goDetailsB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bDetailsEdge }}; background:{{ bDetailsBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bDetailsColor }}; cursor:pointer">Details</button>
         <button type="button" onClick="{{ goRokhaB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bRokhaEdge }}; background:{{ bRokhaBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bRokhaColor }}; cursor:pointer">Rokha</button>
+        <button type="button" onClick="{{ goGdB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bGdEdge }}; background:{{ bGdBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bGdColor }}; cursor:pointer">G+D</button>
         <button type="button" onClick="{{ goRsvpB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bRsvpEdge }}; background:{{ bRsvpBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bRsvpColor }}; cursor:pointer">RSVP</button>
       </div>
 
@@ -65,66 +66,6 @@
           </div>
 
           <img src="assets/doves-cream-v3-navy.png" alt="" style="display:block; width:186px; height:auto; margin:36px auto 0; opacity:.92" />
-
-          <div style="display:grid; gap:6px; margin-top:42px; text-align:center">
-            <p style="margin:0; font-size:14px; letter-spacing:.3em; text-transform:uppercase; font-weight:700; color:#700C0C">The Proposal</p>
-            <p style="margin:4px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:18px; line-height:1.4; color:rgba(27,43,63,.6)">behind the scenes</p>
-            <p style="margin:8px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; line-height:1.4; color:rgba(27,43,63,.84)">September 26, 2026<br />Shakespeare&rsquo;s Garden, San Francisco</p>
-          </div>
-          <div style="position:relative; margin:18px -32px 0">
-            <div style="position:absolute; top:0; right:0; bottom:4px; width:48px; background:linear-gradient(to right, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; border-radius:0 0 0 0; transition:opacity .3s" id="scroll-fade-r"></div>
-            <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="scroll-fade-l"></div>
-          <div style="display:flex; flex-wrap:{{ photoWrap }}; justify-content:{{ photoJustify }}; gap:14px; padding:0 32px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="photo-scroll">
-            <sc-for list="{{ photos }}" as="p" hint-placeholder-count="6">
-              <div onClick="{{ p.onClick }}" draggable="{{ p.draggable }}" onDragStart="{{ p.onDragStart }}" onDragOver="{{ p.onDragOver }}" onDrop="{{ p.onDrop }}" style="position:relative; flex:0 0 152px; aspect-ratio:3/4; border-radius:50%; overflow:hidden; border:1px solid rgba(112,12,12,.45); scroll-snap-align:center; cursor:{{ p.cursor }}; opacity:{{ p.opacity }}; touch-action:manipulation">
-                <img src="{{ p.src }}" alt="Dilpreet and Gurvir" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ p.pos }}; transform:scale({{ p.zoom }}); transform-origin:{{ p.pos }}; pointer-events:none" />
-                <sc-if value="{{ p.showNum }}" hint-placeholder-val="{{ false }}">
-                  <span style="position:absolute; left:50%; bottom:14px; transform:translateX(-50%); min-width:30px; height:30px; padding:0 6px; border-radius:15px; background:#1B2A44; color:#F2EBE0; font-family:'Instrument Serif',serif; font-size:17px; display:flex; align-items:center; justify-content:center">{{ p.num }}</span>
-                </sc-if>
-              </div>
-            </sc-for>
-          </div>
-          <p style="margin:8px 32px 0; font-size:11px; letter-spacing:.08em; color:rgba(27,43,63,.5); text-align:center">&larr; swipe for more photos &rarr;</p>
-          </div>
-          <script>
-          (function(){
-            var s=document.getElementById('photo-scroll'),fl=document.getElementById('scroll-fade-l'),fr=document.getElementById('scroll-fade-r');
-            if(!s)return;
-            function u(){var l=s.scrollLeft,m=s.scrollWidth-s.clientWidth;fl.style.opacity=l>8?'1':'0';fr.style.opacity=l<m-8?'1':'0'}
-            s.addEventListener('scroll',u,{passive:true});
-            setTimeout(u,500);new MutationObserver(function(){setTimeout(u,100)}).observe(s,{childList:true,subtree:true});
-          })();
-          </script>
-          <sc-if value="{{ hasHidden }}" hint-placeholder-val="{{ false }}">
-            <button onClick="{{ restoreAll }}" style="margin:18px auto 0; display:flex; align-items:center; min-height:44px; padding:0 20px; border-radius:22px; border:1px solid rgba(112,12,12,.6); background:transparent; color:#700C0C; font-family:'Instrument Serif',serif; font-size:16px; cursor:pointer">Restore removed photos</button>
-          </sc-if>
-          <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
-            <div onClick="{{ lbClose }}" style="position:fixed; inset:0; z-index:50; background:rgba(12,18,32,.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:64px 16px 28px">
-              <button onClick="{{ lbClose }}" aria-label="Close" style="position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(242,235,224,.35); background:transparent; color:#F2EBE0; font-size:22px; line-height:1; cursor:pointer">&times;</button>
-              <sc-if value="{{ lbView }}" hint-placeholder-val="{{ true }}">
-                <img onClick="{{ stop }}" src="{{ lbSrc }}" alt="Dilpreet and Gurvir" style="display:block; max-width:min(92vw,900px); max-height:76vh; width:auto; height:auto; border-radius:6px" />
-                <div style="display:flex; align-items:center; gap:20px">
-                  <button onClick="{{ lbPrev }}" aria-label="Previous photo" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&lsaquo;</button>
-                  <span style="font-family:'Instrument Serif',serif; font-size:16px; letter-spacing:.12em; color:rgba(242,235,224,.84)">{{ lbCount }}</span>
-                  <button onClick="{{ lbNext }}" aria-label="Next photo" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&rsaquo;</button>
-                </div>
-              </sc-if>
-              <sc-if value="{{ lbEdit }}" hint-placeholder-val="{{ false }}">
-                <div onClick="{{ stop }}" style="display:flex; flex-direction:column; align-items:center; gap:20px; width:min(90vw,320px)">
-                  <div style="width:228px; aspect-ratio:3/4; border-radius:50%; overflow:hidden; border:1px solid rgba(245,245,220,.6)">
-                    <img src="{{ lbSrc }}" alt="" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ edPos }}; transform:scale({{ edZoom }}); transform-origin:{{ edPos }}" />
-                  </div>
-                  <label style="display:grid; gap:6px; width:100%; font-family:'Instrument Serif',serif; font-size:15px; color:#F2EBE0">Zoom<input type="range" min="1" max="2.5" step="0.05" value="{{ edZoom }}" onChange="{{ setZoom }}" style="width:100%; accent-color:#F5F5DC" /></label>
-                  <label style="display:grid; gap:6px; width:100%; font-family:'Instrument Serif',serif; font-size:15px; color:#F2EBE0">Left / right<input type="range" min="0" max="100" step="1" value="{{ edX }}" onChange="{{ setX }}" style="width:100%; accent-color:#F5F5DC" /></label>
-                  <label style="display:grid; gap:6px; width:100%; font-family:'Instrument Serif',serif; font-size:15px; color:#F2EBE0">Up / down<input type="range" min="0" max="100" step="1" value="{{ edY }}" onChange="{{ setY }}" style="width:100%; accent-color:#F5F5DC" /></label>
-                  <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
-                  <button onClick="{{ removePhoto }}" style="min-height:44px; padding:0 20px; border-radius:22px; border:1px solid rgba(242,235,224,.35); background:transparent; color:#F2EBE0; font-family:'Instrument Serif',serif; font-size:16px; cursor:pointer">Remove from carousel</button>
-                  <button onClick="{{ resetFrame }}" style="min-height:44px; padding:0 20px; border-radius:22px; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-family:'Instrument Serif',serif; font-size:16px; cursor:pointer">Reset</button>
-                  </div>
-                </div>
-              </sc-if>
-            </div>
-          </sc-if>
 
           <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:34px; padding-top:28px; border-top:1px solid rgba(27,43,63,.16)">
             <div><div style="font-family:'Instrument Serif',serif; font-size:40px; line-height:1; color:#1B2B3F">{{ days }}</div><div style="font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(27,43,63,.84)">Days</div></div>
@@ -301,6 +242,72 @@
         </div>
       </sc-if>
 
+      <sc-if value="{{ bGd }}">
+        <div style="padding:54px 32px 42px; text-align:center">
+          <p style="margin:0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#1B2B3F">Gurvir &amp; Dilpreet</p>
+          <div style="display:grid; gap:6px; margin-top:24px; text-align:center">
+            <p style="margin:0; font-size:14px; letter-spacing:.3em; text-transform:uppercase; font-weight:700; color:#700C0C">The Proposal</p>
+            <p style="margin:4px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:18px; line-height:1.4; color:rgba(27,43,63,.6)">behind the scenes</p>
+            <p style="margin:8px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; line-height:1.4; color:rgba(27,43,63,.84)">September 26, 2026<br />Shakespeare&rsquo;s Garden, San Francisco</p>
+          </div>
+          <div style="position:relative; margin:18px -32px 0">
+            <div style="position:absolute; top:0; right:0; bottom:4px; width:48px; background:linear-gradient(to right, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; border-radius:0 0 0 0; transition:opacity .3s" id="scroll-fade-r"></div>
+            <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="scroll-fade-l"></div>
+          <div style="display:flex; flex-wrap:{{ photoWrap }}; justify-content:{{ photoJustify }}; gap:14px; padding:0 32px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="photo-scroll">
+            <sc-for list="{{ photos }}" as="p" hint-placeholder-count="6">
+              <div onClick="{{ p.onClick }}" draggable="{{ p.draggable }}" onDragStart="{{ p.onDragStart }}" onDragOver="{{ p.onDragOver }}" onDrop="{{ p.onDrop }}" style="position:relative; flex:0 0 152px; aspect-ratio:3/4; border-radius:50%; overflow:hidden; border:1px solid rgba(112,12,12,.45); scroll-snap-align:center; cursor:{{ p.cursor }}; opacity:{{ p.opacity }}; touch-action:manipulation">
+                <img src="{{ p.src }}" alt="Dilpreet and Gurvir" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ p.pos }}; transform:scale({{ p.zoom }}); transform-origin:{{ p.pos }}; pointer-events:none" />
+                <sc-if value="{{ p.showNum }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute; left:50%; bottom:14px; transform:translateX(-50%); min-width:30px; height:30px; padding:0 6px; border-radius:15px; background:#1B2A44; color:#F2EBE0; font-family:'Instrument Serif',serif; font-size:17px; display:flex; align-items:center; justify-content:center">{{ p.num }}</span>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:8px 32px 0; font-size:11px; letter-spacing:.08em; color:rgba(27,43,63,.5); text-align:center">&larr; swipe for more photos &rarr;</p>
+          </div>
+          <script>
+          (function(){
+            var s=document.getElementById('photo-scroll'),fl=document.getElementById('scroll-fade-l'),fr=document.getElementById('scroll-fade-r');
+            if(!s)return;
+            function u(){var l=s.scrollLeft,m=s.scrollWidth-s.clientWidth;fl.style.opacity=l>8?'1':'0';fr.style.opacity=l<m-8?'1':'0'}
+            s.addEventListener('scroll',u,{passive:true});
+            setTimeout(u,500);new MutationObserver(function(){setTimeout(u,100)}).observe(s,{childList:true,subtree:true});
+          })();
+          </script>
+          <sc-if value="{{ hasHidden }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ restoreAll }}" style="margin:18px auto 0; display:flex; align-items:center; min-height:44px; padding:0 20px; border-radius:22px; border:1px solid rgba(112,12,12,.6); background:transparent; color:#700C0C; font-family:'Instrument Serif',serif; font-size:16px; cursor:pointer">Restore removed photos</button>
+          </sc-if>
+          <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ lbClose }}" style="position:fixed; inset:0; z-index:50; background:rgba(12,18,32,.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:64px 16px 28px">
+              <button onClick="{{ lbClose }}" aria-label="Close" style="position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(242,235,224,.35); background:transparent; color:#F2EBE0; font-size:22px; line-height:1; cursor:pointer">&times;</button>
+              <sc-if value="{{ lbView }}" hint-placeholder-val="{{ true }}">
+                <img onClick="{{ stop }}" src="{{ lbSrc }}" alt="Dilpreet and Gurvir" style="display:block; max-width:min(92vw,900px); max-height:76vh; width:auto; height:auto; border-radius:6px" />
+                <div style="display:flex; align-items:center; gap:20px">
+                  <button onClick="{{ lbPrev }}" aria-label="Previous photo" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&lsaquo;</button>
+                  <span style="font-family:'Instrument Serif',serif; font-size:16px; letter-spacing:.12em; color:rgba(242,235,224,.84)">{{ lbCount }}</span>
+                  <button onClick="{{ lbNext }}" aria-label="Next photo" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&rsaquo;</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ lbEdit }}" hint-placeholder-val="{{ false }}">
+                <div onClick="{{ stop }}" style="display:flex; flex-direction:column; align-items:center; gap:20px; width:min(90vw,320px)">
+                  <div style="width:228px; aspect-ratio:3/4; border-radius:50%; overflow:hidden; border:1px solid rgba(245,245,220,.6)">
+                    <img src="{{ lbSrc }}" alt="" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ edPos }}; transform:scale({{ edZoom }}); transform-origin:{{ edPos }}" />
+                  </div>
+                  <label style="display:grid; gap:6px; width:100%; font-family:'Instrument Serif',serif; font-size:15px; color:#F2EBE0">Zoom<input type="range" min="1" max="2.5" step="0.05" value="{{ edZoom }}" onChange="{{ setZoom }}" style="width:100%; accent-color:#F5F5DC" /></label>
+                  <label style="display:grid; gap:6px; width:100%; font-family:'Instrument Serif',serif; font-size:15px; color:#F2EBE0">Left / right<input type="range" min="0" max="100" step="1" value="{{ edX }}" onChange="{{ setX }}" style="width:100%; accent-color:#F5F5DC" /></label>
+                  <label style="display:grid; gap:6px; width:100%; font-family:'Instrument Serif',serif; font-size:15px; color:#F2EBE0">Up / down<input type="range" min="0" max="100" step="1" value="{{ edY }}" onChange="{{ setY }}" style="width:100%; accent-color:#F5F5DC" /></label>
+                  <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
+                  <button onClick="{{ removePhoto }}" style="min-height:44px; padding:0 20px; border-radius:22px; border:1px solid rgba(242,235,224,.35); background:transparent; color:#F2EBE0; font-family:'Instrument Serif',serif; font-size:16px; cursor:pointer">Remove from carousel</button>
+                  <button onClick="{{ resetFrame }}" style="min-height:44px; padding:0 20px; border-radius:22px; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-family:'Instrument Serif',serif; font-size:16px; cursor:pointer">Reset</button>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <img src="assets/doves-cream-v3-navy.png" alt="" style="display:block; width:186px; height:auto; margin:36px auto 0; opacity:.92" />
+        </div>
+      </sc-if>
+
       <sc-if value="{{ bRsvp }}">
         <div style="padding:44px 30px 42px">
           <div style="display:flex; justify-content:center; margin:0 auto 10px">
@@ -431,7 +438,7 @@ class Component extends DCLogic {
       seconds: this.pad(s % 60, 2),
 
       aInvite: on("invite"), aSchedule: on("schedule"), aDetails: on("details"), aRokha: on("rokha"), aRsvp: on("rsvp"),
-      bInvite: bOn("invite"), bSchedule: bOn("schedule"), bDetails: bOn("details"), bRokha: bOn("rokha"), bRsvp: bOn("rsvp"),
+      bInvite: bOn("invite"), bSchedule: bOn("schedule"), bDetails: bOn("details"), bRokha: bOn("rokha"), bGd: bOn("gd"), bRsvp: bOn("rsvp"),
 
       goInviteA: () => this.setState({ a: "invite" }),
       goScheduleA: () => this.setState({ a: "schedule" }),
@@ -442,6 +449,7 @@ class Component extends DCLogic {
       goScheduleB: () => this.setState({ b: "schedule" }),
       goDetailsB: () => this.setState({ b: "details" }),
       goRokhaB: () => this.setState({ b: "rokha" }),
+      goGdB: () => this.setState({ b: "gd" }),
       goRsvpB: () => this.setState({ b: "rsvp" }),
       rsvpNotSent: !this.state.rsvpSent, rsvpSent: !!this.state.rsvpSent, rsvpError: !!this.state.rsvpError,
       rsvpLabel: this.state.rsvpBusy ? "Sending…" : "Send RSVP",
@@ -462,7 +470,7 @@ class Component extends DCLogic {
       openR4: !!(this.state.openR||{})[4], signR4: (this.state.openR||{})[4] ? "−" : "+", toggleR4: () => this.setState(s => ({ openR: { ...(s.openR||{}), [4]: !(s.openR||{})[4] } })),
     };
 
-    ["Invite", "Schedule", "Details", "Rokha", "Rsvp"].forEach((label) => {
+    ["Invite", "Schedule", "Details", "Rokha", "Gd", "Rsvp"].forEach((label) => {
       const key = label.toLowerCase();
       vals["a" + label + "Color"] = on(key) ? ink : dim;
       vals["a" + label + "Line"] = on(key) ? "#B08D57" : "transparent";
