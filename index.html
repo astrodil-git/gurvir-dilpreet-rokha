@@ -69,7 +69,10 @@
             <p style="margin:0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; font-weight:700; color:#700C0C">The Proposal</p>
             <p style="margin:0; font-family:'Instrument Serif',serif; font-style:italic; font-size:19px; line-height:1.4; color:rgba(27,43,63,.84)">September 26, 2026<br />Shakespeare&rsquo;s Garden, San Francisco</p>
           </div>
-          <div style="display:flex; flex-wrap:{{ photoWrap }}; justify-content:{{ photoJustify }}; gap:14px; margin:18px -32px 0; padding:0 32px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch">
+          <div style="position:relative; margin:18px -32px 0">
+            <div style="position:absolute; top:0; right:0; bottom:4px; width:48px; background:linear-gradient(to right, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; border-radius:0 0 0 0; transition:opacity .3s" id="scroll-fade-r"></div>
+            <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="scroll-fade-l"></div>
+          <div style="display:flex; flex-wrap:{{ photoWrap }}; justify-content:{{ photoJustify }}; gap:14px; padding:0 32px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="photo-scroll">
             <sc-for list="{{ photos }}" as="p" hint-placeholder-count="6">
               <div onClick="{{ p.onClick }}" draggable="{{ p.draggable }}" onDragStart="{{ p.onDragStart }}" onDragOver="{{ p.onDragOver }}" onDrop="{{ p.onDrop }}" style="position:relative; flex:0 0 152px; aspect-ratio:3/4; border-radius:50%; overflow:hidden; border:1px solid rgba(112,12,12,.45); scroll-snap-align:center; cursor:{{ p.cursor }}; opacity:{{ p.opacity }}; touch-action:manipulation">
                 <img src="{{ p.src }}" alt="Dilpreet and Gurvir" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ p.pos }}; transform:scale({{ p.zoom }}); transform-origin:{{ p.pos }}; pointer-events:none" />
@@ -79,6 +82,17 @@
               </div>
             </sc-for>
           </div>
+          <p style="margin:8px 32px 0; font-size:11px; letter-spacing:.08em; color:rgba(27,43,63,.5); text-align:center">&larr; swipe for more photos &rarr;</p>
+          </div>
+          <script>
+          (function(){
+            var s=document.getElementById('photo-scroll'),fl=document.getElementById('scroll-fade-l'),fr=document.getElementById('scroll-fade-r');
+            if(!s)return;
+            function u(){var l=s.scrollLeft,m=s.scrollWidth-s.clientWidth;fl.style.opacity=l>8?'1':'0';fr.style.opacity=l<m-8?'1':'0'}
+            s.addEventListener('scroll',u,{passive:true});
+            setTimeout(u,500);new MutationObserver(function(){setTimeout(u,100)}).observe(s,{childList:true,subtree:true});
+          })();
+          </script>
           <sc-if value="{{ hasHidden }}" hint-placeholder-val="{{ false }}">
             <button onClick="{{ restoreAll }}" style="margin:18px auto 0; display:flex; align-items:center; min-height:44px; padding:0 20px; border-radius:22px; border:1px solid rgba(112,12,12,.6); background:transparent; color:#700C0C; font-family:'Instrument Serif',serif; font-size:16px; cursor:pointer">Restore removed photos</button>
           </sc-if>
