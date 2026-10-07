@@ -322,9 +322,9 @@
             </svg>
           </div>
           <p style="margin:0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#1B2B3F; text-align:center">RSVP</p>
-          <h2 style="margin:14px 0 0; font-family:'Instrument Serif',serif; font-weight:400; font-size:52px; line-height:.95; letter-spacing:-.015em; color:#1B2B3F; text-align:center">Will you join us?</h2>
-          <p style="margin:14px 0 0; font-size:14px; line-height:1.8; color:rgba(27,43,63,.84); text-align:center; text-wrap:pretty">Please reply with your name, phone number, and guest count so we can plan seating and message you before the evening.</p>
-          <p style="margin:12px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:17px; line-height:1.5; color:rgba(27,43,63,.84); text-align:center; text-wrap:pretty">If you have already let us know, thank you. We would still love for you to fill this out so we can keep you updated with wedding details.</p>
+          <h2 style="margin:14px 0 0; font-family:'Instrument Serif',serif; font-weight:400; font-size:52px; line-height:.95; letter-spacing:-.015em; color:#1B2B3F; text-align:center">Stay in the loop</h2>
+          <p style="margin:14px 0 0; font-size:16px; line-height:1.8; color:rgba(27,43,63,.84); text-align:center; text-wrap:pretty">We have more celebrations to come. Drop your details below so we can keep you updated on all our wedding events, send invitations, and share the latest details as they come together.</p>
+          <p style="margin:12px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:17px; line-height:1.5; color:rgba(27,43,63,.84); text-align:center; text-wrap:pretty">Even if you&rsquo;ve already let us know you&rsquo;re coming to the Rokha, we&rsquo;d love for you to fill this out so nothing gets lost along the way.</p>
 
           <sc-if value="{{ rsvpNotSent }}" hint-placeholder-val="{{ true }}">
           <form onSubmit="{{ rsvpSubmit }}" style="display:grid; gap:14px; margin-top:28px">
@@ -334,11 +334,11 @@
             <label style="display:grid; gap:7px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(27,43,63,.84)">Phone number
               <input name="phone" type="tel" required="required" autocomplete="tel" style="min-height:50px; padding:0 14px; border:1px solid rgba(27,43,63,.25); border-radius:12px; background:rgba(245,245,220,.6); font-family:Karla,sans-serif; font-size:16px; color:#1B2B3F; letter-spacing:0; text-transform:none" />
             </label>
-            <label style="display:grid; gap:7px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(27,43,63,.84)">Will you attend?
+            <label style="display:grid; gap:7px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(27,43,63,.84)">Attending the Rokha?
               <select name="attending" required="required" style="min-height:50px; padding:0 14px; border:1px solid rgba(27,43,63,.25); border-radius:12px; background:rgba(245,245,220,.6); font-family:Karla,sans-serif; font-size:16px; color:#1B2B3F; letter-spacing:0; text-transform:none">
                 <option value="">Select one</option>
                 <option value="Yes, I'll be there">Yes, I&rsquo;ll be there</option>
-                <option value="Sorry, I can't make it">Sorry, I can&rsquo;t make it</option>
+                <option value="Can't make the Rokha but keep me updated">Can&rsquo;t make the Rokha, but keep me updated</option>
               </select>
             </label>
             <label style="display:grid; gap:7px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(27,43,63,.84)">Number of guests
@@ -353,7 +353,7 @@
           <sc-if value="{{ rsvpSent }}" hint-placeholder-val="{{ false }}">
             <div style="margin-top:28px; padding:26px 20px; border-radius:18px; background:rgba(245,245,220,.6); text-align:center">
               <p style="margin:0; font-family:'Instrument Serif',serif; font-size:28px; color:#1B2B3F">Thank you!</p>
-              <p style="margin:8px 0 0; font-size:14px; line-height:1.7; color:rgba(27,43,63,.84)">We&rsquo;ve received your RSVP.</p>
+              <p style="margin:8px 0 0; font-size:14px; line-height:1.7; color:rgba(27,43,63,.84)">We&rsquo;ll keep you posted on everything coming up.</p>
             </div>
           </sc-if>
           <img src="assets/doves-cream-v3-navy.png" alt="" style="display:block; width:186px; height:auto; margin:36px auto 0; opacity:.92" />
