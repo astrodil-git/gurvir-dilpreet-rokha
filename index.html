@@ -466,7 +466,7 @@ class Component extends DCLogic {
           .then(() => this.setState({ rsvpBusy: false, rsvpSent: true }))
           .catch(() => this.setState({ rsvpBusy: false, rsvpError: true }));
       },
-      heroPos: `${this.props.heroX ?? 65}% ${this.props.heroY ?? 35}%`, heroZoom: this.props.heroZoom ?? 1,
+      heroPos: `${this.props.heroX ?? 65}% ${this.props.heroY ?? 35}%`, heroZoom: this.props.heroZoom ?? 1.25,
       openR0: !!(this.state.openR||{})[0], signR0: (this.state.openR||{})[0] ? "−" : "+", toggleR0: () => this.setState(s => ({ openR: { ...(s.openR||{}), [0]: !(s.openR||{})[0] } })),
       openR1: !!(this.state.openR||{})[1], signR1: (this.state.openR||{})[1] ? "−" : "+", toggleR1: () => this.setState(s => ({ openR: { ...(s.openR||{}), [1]: !(s.openR||{})[1] } })),
       openR2: !!(this.state.openR||{})[2], signR2: (this.state.openR||{})[2] ? "−" : "+", toggleR2: () => this.setState(s => ({ openR: { ...(s.openR||{}), [2]: !(s.openR||{})[2] } })),
