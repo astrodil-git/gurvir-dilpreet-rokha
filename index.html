@@ -134,9 +134,9 @@
           </div>
 
           <div style="display:flex; flex-direction:column; align-items:center; margin:44px auto 0; width:240px">
-            <svg viewBox="0 0 200 250" width="176" height="220" role="img" aria-label="G and D monogram" style="display:block; overflow:visible">
-              <ellipse cx="100" cy="125" rx="92" ry="118" fill="none" stroke="#700C0C" stroke-width="1.1"></ellipse>
-              <ellipse cx="100" cy="125" rx="86" ry="112" fill="none" stroke="#700C0C" stroke-width=".5" opacity=".7"></ellipse>
+            <svg viewBox="-2 -2 204 254" width="176" height="220" role="img" aria-label="G and D monogram" style="display:block; overflow:visible">
+              <path d="M100.0,30.0 Q121.7,3.1 132.1,39.4 Q160.8,27.2 157.9,65.8 Q187.9,70.7 172.1,103.9 Q197.5,125.0 172.1,146.1 Q187.9,179.3 157.9,184.2 Q160.8,222.8 132.1,210.6 Q121.7,246.9 100.0,220.0 Q78.3,246.9 67.9,210.6 Q39.2,222.8 42.1,184.2 Q12.1,179.3 27.9,146.1 Q2.5,125.0 27.9,103.9 Q12.1,70.7 42.1,65.8 Q39.2,27.2 67.9,39.4 Q78.3,3.1 100.0,30.0Z" fill="none" stroke="#700C0C" stroke-width="1.2"></path>
+              <path d="M100.0,38.5 Q119.7,14.0 129.2,47.1 Q155.3,36.0 152.6,71.1 Q180.0,75.6 165.7,105.8 Q188.7,125.0 165.7,144.2 Q180.0,174.4 152.6,178.9 Q155.3,214.0 129.2,202.9 Q119.7,236.0 100.0,211.4 Q80.3,236.0 70.8,202.9 Q44.7,214.0 47.4,178.9 Q20.0,174.4 34.3,144.2 Q11.3,125.0 34.3,105.8 Q20.0,75.6 47.4,71.1 Q44.7,36.0 70.8,47.1 Q80.3,14.0 100.0,38.5Z" fill="none" stroke="#700C0C" stroke-width=".6" opacity=".6"></path>
               <image href="assets/monogram-gd5-navy.png" x="35.5" y="50.0" width="129" height="150"></image>
             </svg>
             <p style="margin:12px 0 0; font-family:'Instrument Serif',serif; font-size:13px; letter-spacing:.3em; color:rgba(27,43,63,.84)">10 . 24 . 2026</p>
@@ -304,9 +304,9 @@
       <sc-if value="{{ bRsvp }}">
         <div style="padding:44px 30px 42px">
           <div style="display:flex; justify-content:center; margin:0 auto 10px">
-            <svg viewBox="0 0 200 250" width="120" height="150" role="img" aria-label="G and D monogram" style="display:block; overflow:visible">
-              <ellipse cx="100" cy="125" rx="92" ry="118" fill="none" stroke="#700C0C" stroke-width="1.1"></ellipse>
-              <ellipse cx="100" cy="125" rx="86" ry="112" fill="none" stroke="#700C0C" stroke-width=".5" opacity=".7"></ellipse>
+            <svg viewBox="-2 -2 204 254" width="120" height="150" role="img" aria-label="G and D monogram" style="display:block; overflow:visible">
+              <path d="M100.0,30.0 Q121.7,3.1 132.1,39.4 Q160.8,27.2 157.9,65.8 Q187.9,70.7 172.1,103.9 Q197.5,125.0 172.1,146.1 Q187.9,179.3 157.9,184.2 Q160.8,222.8 132.1,210.6 Q121.7,246.9 100.0,220.0 Q78.3,246.9 67.9,210.6 Q39.2,222.8 42.1,184.2 Q12.1,179.3 27.9,146.1 Q2.5,125.0 27.9,103.9 Q12.1,70.7 42.1,65.8 Q39.2,27.2 67.9,39.4 Q78.3,3.1 100.0,30.0Z" fill="none" stroke="#700C0C" stroke-width="1.2"></path>
+              <path d="M100.0,38.5 Q119.7,14.0 129.2,47.1 Q155.3,36.0 152.6,71.1 Q180.0,75.6 165.7,105.8 Q188.7,125.0 165.7,144.2 Q180.0,174.4 152.6,178.9 Q155.3,214.0 129.2,202.9 Q119.7,236.0 100.0,211.4 Q80.3,236.0 70.8,202.9 Q44.7,214.0 47.4,178.9 Q20.0,174.4 34.3,144.2 Q11.3,125.0 34.3,105.8 Q20.0,75.6 47.4,71.1 Q44.7,36.0 70.8,47.1 Q80.3,14.0 100.0,38.5Z" fill="none" stroke="#700C0C" stroke-width=".6" opacity=".6"></path>
               <image href="assets/monogram-gd5-navy.png" x="35.5" y="50.0" width="129" height="150"></image>
             </svg>
           </div>
@@ -454,7 +454,7 @@ class Component extends DCLogic {
           .then(() => this.setState({ rsvpBusy: false, rsvpSent: true }))
           .catch(() => this.setState({ rsvpBusy: false, rsvpError: true }));
       },
-      heroPos: `${this.props.heroX ?? 54}% ${this.props.heroY ?? 30}%`, heroZoom: this.props.heroZoom ?? 1,
+      heroPos: `${this.props.heroX ?? 50}% ${this.props.heroY ?? 35}%`, heroZoom: this.props.heroZoom ?? 1,
       openR0: !!(this.state.openR||{})[0], signR0: (this.state.openR||{})[0] ? "−" : "+", toggleR0: () => this.setState(s => ({ openR: { ...(s.openR||{}), [0]: !(s.openR||{})[0] } })),
       openR1: !!(this.state.openR||{})[1], signR1: (this.state.openR||{})[1] ? "−" : "+", toggleR1: () => this.setState(s => ({ openR: { ...(s.openR||{}), [1]: !(s.openR||{})[1] } })),
       openR2: !!(this.state.openR||{})[2], signR2: (this.state.openR||{})[2] ? "−" : "+", toggleR2: () => this.setState(s => ({ openR: { ...(s.openR||{}), [2]: !(s.openR||{})[2] } })),
