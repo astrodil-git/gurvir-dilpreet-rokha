@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gurvir &amp; Dilpreet &middot; Rokha</title>
+<title>Gurvir &amp; Dilpreet &middot; Wedding</title>
 <meta charset="utf-8">
 <link rel="icon" type="image/png" href="assets/monogram-gd5-navy.png" />
 <link rel="apple-touch-icon" href="assets/monogram-gd5-navy.png" />
@@ -35,6 +35,7 @@
         <button type="button" onClick="{{ goGdB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bGdEdge }}; background:{{ bGdBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bGdColor }}; cursor:pointer">G+D</button>
         <button type="button" onClick="{{ goScheduleB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bScheduleEdge }}; background:{{ bScheduleBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bScheduleColor }}; cursor:pointer">Program</button>
         <button type="button" onClick="{{ goDetailsB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bDetailsEdge }}; background:{{ bDetailsBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bDetailsColor }}; cursor:pointer">Details</button>
+        <button type="button" onClick="{{ goWeddingB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bWeddingEdge }}; background:{{ bWeddingBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bWeddingColor }}; cursor:pointer">Wedding</button>
         <button type="button" onClick="{{ goRokhaB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bRokhaEdge }}; background:{{ bRokhaBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bRokhaColor }}; cursor:pointer">Rokha</button>
         <button type="button" onClick="{{ goRsvpB }}" style="flex:1; min-height:44px; padding:0 2px; border-radius:999px; border:1px solid {{ bRsvpEdge }}; background:{{ bRsvpBg }}; font-family:Karla,sans-serif; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:{{ bRsvpColor }}; cursor:pointer">RSVP</button>
       </div>
@@ -186,13 +187,97 @@
         </div>
       </sc-if>
 
-      
+      <sc-if value="{{ bWedding }}">
+        <div style="padding:44px 30px 42px; background:linear-gradient(180deg, #700C0C 0%, #4A0808 100%)">
+          <p style="margin:0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(242,235,224,.7); text-align:center; font-weight:600">Save the Date</p>
+          <h2 style="margin:14px 0 0; font-family:'Instrument Serif',serif; font-weight:400; font-size:52px; line-height:.95; letter-spacing:-.015em; color:#F2EBE0; text-align:center">The Wedding</h2>
+          <p style="margin:20px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:20px; line-height:1.45; color:rgba(242,235,224,.8); text-align:center; text-wrap:pretty">We can&rsquo;t wait to celebrate this next chapter with you.</p>
+
+          <div style="margin:32px 0; padding:24px 0; border-top:1px solid rgba(242,235,224,.2); border-bottom:1px solid rgba(242,235,224,.2); text-align:center">
+            <p style="margin:0; font-family:'Instrument Serif',serif; font-size:56px; line-height:1; color:#F2EBE0; letter-spacing:.05em">10 . 08 . 27</p>
+            <p style="margin:12px 0 0; font-size:14px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:rgba(242,235,224,.7)">October 8, 2027</p>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:28px; text-align:center">
+            <div><div style="font-family:'Instrument Serif',serif; font-size:40px; line-height:1; color:#F2EBE0">{{ wDays }}</div><div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,235,224,.7)">Days</div></div>
+            <div><div style="font-family:'Instrument Serif',serif; font-size:40px; line-height:1; color:#F2EBE0">{{ wHours }}</div><div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,235,224,.7)">Hours</div></div>
+            <div><div style="font-family:'Instrument Serif',serif; font-size:40px; line-height:1; color:#F2EBE0">{{ wMinutes }}</div><div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,235,224,.7)">Minutes</div></div>
+            <div><div style="font-family:'Instrument Serif',serif; font-size:40px; line-height:1; color:#F2EBE0">{{ wSeconds }}</div><div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,235,224,.7)">Seconds</div></div>
+          </div>
+
+          <div style="position:relative; margin:32px -30px 0">
+            <div style="position:absolute; top:0; right:0; bottom:4px; width:48px; background:linear-gradient(to right, transparent, rgba(112,12,12,.85)); pointer-events:none; z-index:1; transition:opacity .3s" id="wedding-fade-r"></div>
+            <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(112,12,12,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="wedding-fade-l"></div>
+            <div style="display:flex; gap:10px; padding:0 30px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="wedding-photo-scroll">
+              <sc-for list="{{ weddingPhotos }}" as="wp" hint-placeholder-count="6">
+                <div style="position:relative; flex:0 0 120px; height:160px; border-radius:6px; overflow:hidden; border:2px solid rgba(242,235,224,.35); scroll-snap-align:center; box-shadow:0 2px 8px rgba(0,0,0,.2)">
+                  <img src="{{ wp.src }}" alt="Gurvir and Dilpreet" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ wp.pos }}; transform:scale({{ wp.zoom }}); transform-origin:{{ wp.pos }}; pointer-events:none" />
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin:8px 30px 0; font-size:11px; letter-spacing:.08em; color:rgba(242,235,224,.5); text-align:center">&larr; swipe for photos &rarr;</p>
+          </div>
+          <script>
+          (function(){
+            var s=document.getElementById('wedding-photo-scroll'),fl=document.getElementById('wedding-fade-l'),fr=document.getElementById('wedding-fade-r');
+            if(!s)return;
+            function u(){var l=s.scrollLeft,m=s.scrollWidth-s.clientWidth;fl.style.opacity=l>8?'1':'0';fr.style.opacity=l<m-8?'1':'0'}
+            s.addEventListener('scroll',u,{passive:true});
+            setTimeout(u,500);new MutationObserver(function(){setTimeout(u,100)}).observe(s,{childList:true,subtree:true});
+          })();
+          </script>
+
+          <div style="margin-top:32px; padding:28px 24px; border-radius:18px; background:rgba(242,235,224,.1); border:1px solid rgba(242,235,224,.2); text-align:center">
+            <p style="margin:0; font-family:'Instrument Serif',serif; font-style:italic; font-size:22px; line-height:1.45; color:#F2EBE0; text-wrap:pretty">More details coming soon. Mark the date and get ready to celebrate with us.</p>
+          </div>
+
+          <div style="display:flex; flex-direction:column; align-items:center; margin:36px auto 0; width:240px">
+            <svg viewBox="0 0 200 250" width="140" height="175" role="img" aria-label="G and D monogram" style="display:block; overflow:visible">
+              <ellipse cx="100" cy="125" rx="92" ry="118" fill="none" stroke="rgba(242,235,224,.5)" stroke-width="1.1"></ellipse>
+              <ellipse cx="100" cy="125" rx="86" ry="112" fill="none" stroke="rgba(242,235,224,.3)" stroke-width=".5"></ellipse>
+              <image href="assets/monogram-gd5-navy.png" x="35.5" y="50.0" width="129" height="150" style="opacity:.85"></image>
+            </svg>
+          </div>
+          <img src="assets/doves-cream-v3-navy.png" alt="" style="display:block; width:186px; height:auto; margin:28px auto 0; opacity:.7" />
+        </div>
+      </sc-if>
+
       <sc-if value="{{ bRokha }}">
-        <div style="padding:44px 30px 42px">
-          <p style="margin:0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#1B2B3F; text-align:center">For Guests</p>
-          <h2 style="margin:14px 0 0; font-family:'Instrument Serif',serif; font-weight:400; font-size:52px; line-height:.95; letter-spacing:-.015em; color:#1B2B3F; text-align:center">What is a <span style="font-style:italic; color:#700C0C; -webkit-text-stroke:.6px #FFFFFF; paint-order:stroke fill">Rokha</span>?</h2>
-          <p style="margin:16px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:20px; line-height:1.45; color:rgba(27,43,63,.84); text-align:center; text-wrap:pretty">You do not need to know every tradition to belong here.</p>
+        <div style="padding:44px 30px 42px; background:linear-gradient(180deg, #C4DBE8 0%, #F2EBE0 100%)">
+          <p style="margin:0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#700C0C; text-align:center; font-weight:600">October 24, 2026</p>
+          <h2 style="margin:14px 0 0; font-family:'Instrument Serif',serif; font-weight:400; font-size:48px; line-height:.95; letter-spacing:-.015em; color:#1B2B3F; text-align:center">Thank you for attending the <span style="font-style:italic; color:#700C0C">Rokha</span></h2>
+          <p style="margin:20px 0 0; font-family:'Instrument Serif',serif; font-style:italic; font-size:20px; line-height:1.45; color:rgba(27,43,63,.84); text-align:center; text-wrap:pretty">What a beautiful evening with both our families. The engagement was just the beginning.</p>
+
+          <div style="position:relative; margin:28px -30px 0">
+            <div style="position:absolute; top:0; right:0; bottom:4px; width:48px; background:linear-gradient(to right, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; transition:opacity .3s" id="rokha-fade-r"></div>
+            <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="rokha-fade-l"></div>
+            <div style="display:flex; gap:10px; padding:0 30px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="rokha-photo-scroll">
+              <sc-for list="{{ rokhaPhotos }}" as="rp" hint-placeholder-count="6">
+                <div style="position:relative; flex:0 0 120px; height:160px; border-radius:6px; overflow:hidden; border:2px solid rgba(112,12,12,.35); scroll-snap-align:center; box-shadow:0 2px 8px rgba(27,42,68,.12)">
+                  <img src="{{ rp.src }}" alt="Rokha memories" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ rp.pos }}; transform:scale({{ rp.zoom }}); transform-origin:{{ rp.pos }}; pointer-events:none" />
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin:8px 30px 0; font-size:11px; letter-spacing:.08em; color:rgba(27,43,63,.5); text-align:center">&larr; swipe for memories &rarr;</p>
+          </div>
+          <script>
+          (function(){
+            var s=document.getElementById('rokha-photo-scroll'),fl=document.getElementById('rokha-fade-l'),fr=document.getElementById('rokha-fade-r');
+            if(!s)return;
+            function u(){var l=s.scrollLeft,m=s.scrollWidth-s.clientWidth;fl.style.opacity=l>8?'1':'0';fr.style.opacity=l<m-8?'1':'0'}
+            s.addEventListener('scroll',u,{passive:true});
+            setTimeout(u,500);new MutationObserver(function(){setTimeout(u,100)}).observe(s,{childList:true,subtree:true});
+          })();
+          </script>
+
+          <div style="margin-top:32px; padding:28px 24px; border-radius:18px; background:rgba(112,12,12,.08); border:1px solid rgba(112,12,12,.2); text-align:center">
+            <p style="margin:0; font-family:'Instrument Serif',serif; font-size:28px; color:#700C0C">Now get ready for the wedding weekend</p>
+            <p style="margin:12px 0 0; font-size:14px; line-height:1.7; color:rgba(27,43,63,.84); text-wrap:pretty">The next chapter begins October 8, 2027. We cannot wait to celebrate with you again.</p>
+            <button type="button" onClick="{{ goWeddingB }}" style="display:inline-flex; align-items:center; justify-content:center; min-height:50px; margin-top:20px; padding:0 32px; border-radius:999px; border:0; background:#700C0C; color:#F2EBE0; font-family:Karla,sans-serif; font-size:14px; font-weight:600; letter-spacing:.04em; cursor:pointer">Click here for the Wedding &rarr;</button>
+          </div>
+
           <div style="display:grid; gap:12px; margin-top:30px">
+            <p style="margin:0; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#1B2B3F; text-align:center; font-weight:600">About the Rokha</p>
             <div style="border-radius:16px; background:rgba(245,245,220,.6); border:1px solid rgba(27,43,63,.16); overflow:hidden">
               <button type="button" onClick="{{ toggleR0 }}" style="display:flex; width:100%; align-items:center; justify-content:space-between; gap:12px; min-height:56px; padding:0 18px; border:0; background:transparent; cursor:pointer; text-align:left; font-family:Karla,sans-serif">
                 <span style="font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:#1B2B3F">The word</span>
@@ -422,13 +507,18 @@ class Component extends DCLogic {
         this.setState({ dragFrom: null });
       },
     }));
-    this._photo = { ...lbVals, photos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
+    const rokhaPhotos = order.map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
+    const weddingPhotos = [1,15,16,11,12,13,2,7,9,14].map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
+    this._photo = { ...lbVals, photos, rokhaPhotos, weddingPhotos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
     return { ...this._photo, ...this.renderVals2() };
   }
   renderVals2() {
     const target = new Date("2026-10-24T18:00:00-07:00").getTime();
     const d = Math.max(0, target - this.state.now);
     const s = Math.floor(d / 1000);
+    const wTarget = new Date("2027-10-08T18:00:00-07:00").getTime();
+    const wD = Math.max(0, wTarget - this.state.now);
+    const wS = Math.floor(wD / 1000);
 
     const ink = "#23364c", dim = "rgba(35,54,76,.85)";
     const on = (k) => this.state.a === k;
@@ -440,9 +530,13 @@ class Component extends DCLogic {
       hours: this.pad(Math.floor(s / 3600) % 24, 2),
       minutes: this.pad(Math.floor(s / 60) % 60, 2),
       seconds: this.pad(s % 60, 2),
+      wDays: this.pad(Math.floor(wS / 86400), 2),
+      wHours: this.pad(Math.floor(wS / 3600) % 24, 2),
+      wMinutes: this.pad(Math.floor(wS / 60) % 60, 2),
+      wSeconds: this.pad(wS % 60, 2),
 
       aInvite: on("invite"), aSchedule: on("schedule"), aDetails: on("details"), aRokha: on("rokha"), aRsvp: on("rsvp"),
-      bInvite: bOn("invite"), bSchedule: bOn("schedule"), bDetails: bOn("details"), bRokha: bOn("rokha"), bGd: bOn("gd"), bRsvp: bOn("rsvp"),
+      bInvite: bOn("invite"), bSchedule: bOn("schedule"), bDetails: bOn("details"), bWedding: bOn("wedding"), bRokha: bOn("rokha"), bGd: bOn("gd"), bRsvp: bOn("rsvp"),
 
       goInviteA: () => this.setState({ a: "invite" }),
       goScheduleA: () => this.setState({ a: "schedule" }),
@@ -452,6 +546,7 @@ class Component extends DCLogic {
       goInviteB: () => this.setState({ b: "invite" }),
       goScheduleB: () => this.setState({ b: "schedule" }),
       goDetailsB: () => this.setState({ b: "details" }),
+      goWeddingB: () => this.setState({ b: "wedding" }),
       goRokhaB: () => this.setState({ b: "rokha" }),
       goGdB: () => this.setState({ b: "gd" }),
       goRsvpB: () => this.setState({ b: "rsvp" }),
@@ -474,7 +569,7 @@ class Component extends DCLogic {
       openR4: !!(this.state.openR||{})[4], signR4: (this.state.openR||{})[4] ? "−" : "+", toggleR4: () => this.setState(s => ({ openR: { ...(s.openR||{}), [4]: !(s.openR||{})[4] } })),
     };
 
-    ["Invite", "Schedule", "Details", "Rokha", "Gd", "Rsvp"].forEach((label) => {
+    ["Invite", "Schedule", "Details", "Wedding", "Rokha", "Gd", "Rsvp"].forEach((label) => {
       const key = label.toLowerCase();
       vals["a" + label + "Color"] = on(key) ? ink : dim;
       vals["a" + label + "Line"] = on(key) ? "#B08D57" : "transparent";
