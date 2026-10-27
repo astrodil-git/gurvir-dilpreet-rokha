@@ -543,8 +543,9 @@ class Component extends DCLogic {
       },
     }));
     const rokhaPhotos = order.map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
-    const weddingPhotos = [1,15,16,11,12,13,2,7,9,14].map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
-    const zinePhotos = [{src:'assets/save-the-date.jpg'},{src:'assets/zine-01.png'},{src:'assets/zine-02.png'},{src:'assets/zine-03.png'},{src:'assets/zine-04.png'},{src:'assets/zine-05.png'},{src:'assets/zine-06.png'},{src:'assets/zine-07.png'},{src:'assets/zine-08.png'},{src:'assets/zine-09.png'},{src:'assets/zine-10.png'},{src:'assets/zine-11.png'},{src:'assets/zine-12.png'},{src:'assets/zine-13.png'},{src:'assets/zine-14.png'},{src:'assets/zine-15.png'}];
+    const zineList = ['assets/save-the-date.jpg','assets/zine-01.png','assets/zine-02.png','assets/zine-03.png','assets/zine-04.png','assets/zine-05.png','assets/zine-06.png','assets/zine-07.png','assets/zine-08.png','assets/zine-09.png','assets/zine-10.png','assets/zine-11.png','assets/zine-12.png','assets/zine-13.png','assets/zine-14.png','assets/zine-15.png'];
+    const weddingPhotos = zineList.map((s) => ({ src: s, pos: '50% 50%', zoom: 1 }));
+    const zinePhotos = zineList.map((s) => ({ src: s }));
     this._photo = { ...lbVals, photos, rokhaPhotos, weddingPhotos, zinePhotos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
     return { ...this._photo, ...this.renderVals2() };
   }
