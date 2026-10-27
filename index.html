@@ -493,7 +493,7 @@ class Component extends DCLogic {
       },
     }));
     const rokhaPhotos = order.map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
-    const zineList = ['assets/save-the-date.jpg','assets/zine-01.jpg','assets/zine-02.jpg','assets/zine-03.jpg','assets/zine-04.jpg','assets/zine-05.jpg','assets/zine-06.jpg','assets/zine-07.jpg','assets/zine-08.jpg','assets/zine-09.jpg','assets/zine-10.jpg','assets/zine-11.jpg','assets/zine-12.jpg','assets/zine-13.jpg','assets/zine-14.jpg','assets/zine-15.jpg'];
+    const zineList = ['assets/zine-01.jpg','assets/zine-02.jpg','assets/zine-03.jpg','assets/zine-04.jpg','assets/zine-05.jpg','assets/zine-06.jpg','assets/zine-07.jpg','assets/zine-08.jpg','assets/zine-09.jpg','assets/zine-10.jpg','assets/zine-11.jpg','assets/zine-12.jpg','assets/zine-13.jpg','assets/zine-14.jpg','assets/zine-15.jpg'];
     const weddingPhotos = zineList.map((s) => ({ src: s, pos: '50% 50%', zoom: 1 }));
     const zinePhotos = zineList.map((s, i) => ({ src: s, onClick: () => this.setState({ zineLb: i }) }));
     const zLb = this.state.zineLb != null && this.state.zineLb < zineList.length ? this.state.zineLb : null;
