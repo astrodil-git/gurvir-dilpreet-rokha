@@ -61,29 +61,7 @@
             <div><div style="font-family:'Instrument Serif',serif; font-size:40px; line-height:1; color:#F2EBE0">{{ wSeconds }}</div><div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(242,235,224,.7)">Seconds</div></div>
           </div>
 
-          <div style="position:relative; margin:32px -30px 0">
-            <div style="position:absolute; top:0; right:0; bottom:4px; width:48px; background:linear-gradient(to right, transparent, rgba(112,12,12,.85)); pointer-events:none; z-index:1; transition:opacity .3s" id="wedding-fade-r"></div>
-            <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(112,12,12,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="wedding-fade-l"></div>
-            <div style="display:flex; gap:10px; padding:0 30px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="wedding-photo-scroll">
-              <sc-for list="{{ weddingPhotos }}" as="wp" hint-placeholder-count="6">
-                <div style="position:relative; flex:0 0 120px; height:160px; border-radius:6px; overflow:hidden; border:2px solid rgba(242,235,224,.35); scroll-snap-align:center; box-shadow:0 2px 8px rgba(0,0,0,.2)">
-                  <img src="{{ wp.src }}" alt="Gurvir and Dilpreet" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ wp.pos }}; transform:scale({{ wp.zoom }}); transform-origin:{{ wp.pos }}; pointer-events:none" />
-                </div>
-              </sc-for>
-            </div>
-            <p style="margin:8px 30px 0; font-size:11px; letter-spacing:.08em; color:rgba(242,235,224,.5); text-align:center">&larr; swipe for photos &rarr;</p>
-          </div>
-          <script>
-          (function(){
-            var s=document.getElementById('wedding-photo-scroll'),fl=document.getElementById('wedding-fade-l'),fr=document.getElementById('wedding-fade-r');
-            if(!s)return;
-            function u(){var l=s.scrollLeft,m=s.scrollWidth-s.clientWidth;fl.style.opacity=l>8?'1':'0';fr.style.opacity=l<m-8?'1':'0'}
-            s.addEventListener('scroll',u,{passive:true});
-            setTimeout(u,500);new MutationObserver(function(){setTimeout(u,100)}).observe(s,{childList:true,subtree:true});
-          })();
-          </script>
-
-          <div style="margin-top:36px; text-align:center">
+          <div style="margin-top:32px; text-align:center">
             <p style="margin:0 0 14px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(242,235,224,.7); font-weight:600">Our Zine</p>
             <div style="position:relative; margin:0 -30px">
               <div style="position:absolute; top:0; right:0; bottom:4px; width:48px; background:linear-gradient(to right, transparent, rgba(74,8,8,.9)); pointer-events:none; z-index:1; transition:opacity .3s" id="zine-fade-r"></div>
@@ -124,7 +102,7 @@
             </div>
             <script>
             (function(){
-              var pages=['assets/save-the-date.jpg','assets/zine-01.png','assets/zine-02.png','assets/zine-03.png','assets/zine-04.png','assets/zine-05.png','assets/zine-06.png','assets/zine-07.png','assets/zine-08.png','assets/zine-09.png','assets/zine-10.png','assets/zine-11.png','assets/zine-12.png','assets/zine-13.png','assets/zine-14.png','assets/zine-15.png'];
+              var pages=['assets/save-the-date.jpg','assets/zine-01.jpg','assets/zine-02.jpg','assets/zine-03.jpg','assets/zine-04.jpg','assets/zine-05.jpg','assets/zine-06.jpg','assets/zine-07.jpg','assets/zine-08.jpg','assets/zine-09.jpg','assets/zine-10.jpg','assets/zine-11.jpg','assets/zine-12.jpg','assets/zine-13.jpg','assets/zine-14.jpg','assets/zine-15.jpg'];
               var cur=0,busy=false;
               var pg=document.getElementById('zine-page'),img=document.getElementById('zine-img'),cnt=document.getElementById('zine-counter');
               var pBtn=document.getElementById('zine-prev'),nBtn=document.getElementById('zine-next');
@@ -543,7 +521,7 @@ class Component extends DCLogic {
       },
     }));
     const rokhaPhotos = order.map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
-    const zineList = ['assets/save-the-date.jpg','assets/zine-01.png','assets/zine-02.png','assets/zine-03.png','assets/zine-04.png','assets/zine-05.png','assets/zine-06.png','assets/zine-07.png','assets/zine-08.png','assets/zine-09.png','assets/zine-10.png','assets/zine-11.png','assets/zine-12.png','assets/zine-13.png','assets/zine-14.png','assets/zine-15.png'];
+    const zineList = ['assets/save-the-date.jpg','assets/zine-01.jpg','assets/zine-02.jpg','assets/zine-03.jpg','assets/zine-04.jpg','assets/zine-05.jpg','assets/zine-06.jpg','assets/zine-07.jpg','assets/zine-08.jpg','assets/zine-09.jpg','assets/zine-10.jpg','assets/zine-11.jpg','assets/zine-12.jpg','assets/zine-13.jpg','assets/zine-14.jpg','assets/zine-15.jpg'];
     const weddingPhotos = zineList.map((s) => ({ src: s, pos: '50% 50%', zoom: 1 }));
     const zinePhotos = zineList.map((s) => ({ src: s }));
     this._photo = { ...lbVals, photos, rokhaPhotos, weddingPhotos, zinePhotos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
