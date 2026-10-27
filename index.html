@@ -68,7 +68,7 @@
               <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(74,8,8,.9)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="zine-fade-l"></div>
               <div style="display:flex; gap:10px; padding:0 30px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="zine-photo-scroll">
                 <sc-for list="{{ zinePhotos }}" as="zp" hint-placeholder-count="6">
-                  <div style="flex:0 0 140px; height:186px; border-radius:6px; overflow:hidden; border:2px solid rgba(242,235,224,.25); scroll-snap-align:center; box-shadow:0 2px 10px rgba(0,0,0,.25)">
+                  <div onClick="{{ zp.onClick }}" style="flex:0 0 140px; height:186px; border-radius:6px; overflow:hidden; border:2px solid rgba(242,235,224,.25); scroll-snap-align:center; box-shadow:0 2px 10px rgba(0,0,0,.25); cursor:zoom-in">
                     <img src="{{ zp.src }}" alt="G&amp;D Zine" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; pointer-events:none" />
                   </div>
                 </sc-for>
@@ -86,45 +86,17 @@
             </script>
           </div>
 
-          <div style="margin:36px 0 0; text-align:center">
-            <p style="margin:0 0 14px; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(242,235,224,.7); font-weight:600">Flip Through</p>
-            <div id="zine-book" style="position:relative; width:280px; margin:0 auto">
-              <div style="position:relative; width:280px; height:373px; perspective:1000px; overflow:visible">
-                <div id="zine-page" style="width:100%; height:100%; border-radius:10px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.35); border:2px solid rgba(242,235,224,.2); transition:transform .35s ease-in-out; transform-style:preserve-3d; background:#1a0505">
-                  <img id="zine-img" src="assets/save-the-date.jpg" alt="G&amp;D Zine" style="display:block; width:100%; height:100%; object-fit:contain; background:#1a0505" />
-                </div>
-              </div>
-              <div style="display:flex; align-items:center; justify-content:center; gap:20px; margin-top:14px">
-                <button id="zine-prev" type="button" style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(242,235,224,.3); background:rgba(74,8,8,.7); color:#F2EBE0; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center">&#8249;</button>
-                <span id="zine-counter" style="font-family:'Instrument Serif',serif; font-size:15px; color:rgba(242,235,224,.6); min-width:60px; text-align:center">1 / 16</span>
-                <button id="zine-next" type="button" style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(242,235,224,.3); background:rgba(74,8,8,.7); color:#F2EBE0; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center">&#8250;</button>
+          <sc-if value="{{ zineLbOpen }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ zineLbClose }}" style="position:fixed; inset:0; z-index:50; background:rgba(12,18,32,.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:64px 16px 28px">
+              <button onClick="{{ zineLbClose }}" aria-label="Close" style="position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(242,235,224,.35); background:transparent; color:#F2EBE0; font-size:22px; line-height:1; cursor:pointer">&times;</button>
+              <img onClick="{{ zineStop }}" src="{{ zineLbSrc }}" alt="G&amp;D Zine" style="display:block; max-width:min(92vw,600px); max-height:76vh; width:auto; height:auto; border-radius:6px" />
+              <div style="display:flex; align-items:center; gap:20px">
+                <button onClick="{{ zineLbPrev }}" aria-label="Previous" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&lsaquo;</button>
+                <span style="font-family:'Instrument Serif',serif; font-size:16px; letter-spacing:.12em; color:rgba(242,235,224,.84)">{{ zineLbCount }}</span>
+                <button onClick="{{ zineLbNext }}" aria-label="Next" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&rsaquo;</button>
               </div>
             </div>
-            <script>
-            (function(){
-              var pages=['assets/save-the-date.jpg','assets/zine-01.jpg','assets/zine-02.jpg','assets/zine-03.jpg','assets/zine-04.jpg','assets/zine-05.jpg','assets/zine-06.jpg','assets/zine-07.jpg','assets/zine-08.jpg','assets/zine-09.jpg','assets/zine-10.jpg','assets/zine-11.jpg','assets/zine-12.jpg','assets/zine-13.jpg','assets/zine-14.jpg','assets/zine-15.jpg'];
-              var cur=0,busy=false;
-              var pg=document.getElementById('zine-page'),img=document.getElementById('zine-img'),cnt=document.getElementById('zine-counter');
-              var pBtn=document.getElementById('zine-prev'),nBtn=document.getElementById('zine-next');
-              if(!pg)return;
-              pages.forEach(function(s){var i=new Image();i.src=s});
-              function show(){img.src=pages[cur];cnt.textContent=(cur+1)+' / '+pages.length}
-              function flip(dir){
-                if(busy)return;var n=cur+dir;
-                if(n<0||n>=pages.length)return;
-                busy=true;
-                pg.style.transition='transform .3s ease-in';
-                pg.style.transform='rotateY('+(dir>0?'-':'')+'90deg)';
-                setTimeout(function(){cur=n;show();pg.style.transition='transform .3s ease-out';pg.style.transform='rotateY(0deg)';setTimeout(function(){busy=false},300)},300);
-              }
-              pBtn.onclick=function(){flip(-1)};nBtn.onclick=function(){flip(1)};
-              var sx;
-              pg.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
-              pg.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)flip(dx<0?1:-1)},{passive:true});
-              show();
-            })();
-            </script>
-          </div>
+          </sc-if>
 
           <div style="margin-top:32px; padding:28px 24px; border-radius:18px; background:rgba(242,235,224,.1); border:1px solid rgba(242,235,224,.2); text-align:center">
             <p style="margin:0; font-family:'Instrument Serif',serif; font-style:italic; font-size:22px; line-height:1.45; color:#F2EBE0; text-wrap:pretty">More details coming soon. Mark the date and get ready to celebrate with us.</p>
@@ -523,8 +495,14 @@ class Component extends DCLogic {
     const rokhaPhotos = order.map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
     const zineList = ['assets/save-the-date.jpg','assets/zine-01.jpg','assets/zine-02.jpg','assets/zine-03.jpg','assets/zine-04.jpg','assets/zine-05.jpg','assets/zine-06.jpg','assets/zine-07.jpg','assets/zine-08.jpg','assets/zine-09.jpg','assets/zine-10.jpg','assets/zine-11.jpg','assets/zine-12.jpg','assets/zine-13.jpg','assets/zine-14.jpg','assets/zine-15.jpg'];
     const weddingPhotos = zineList.map((s) => ({ src: s, pos: '50% 50%', zoom: 1 }));
-    const zinePhotos = zineList.map((s) => ({ src: s }));
-    this._photo = { ...lbVals, photos, rokhaPhotos, weddingPhotos, zinePhotos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
+    const zinePhotos = zineList.map((s, i) => ({ src: s, onClick: () => this.setState({ zineLb: i }) }));
+    const zLb = this.state.zineLb != null && this.state.zineLb < zineList.length ? this.state.zineLb : null;
+    const zGo = (d) => (e) => { e.stopPropagation(); this.setState({ zineLb: (zLb + d + zineList.length) % zineList.length }); };
+    const zineLbVals = {
+      zineLbOpen: zLb != null, zineLbSrc: zLb != null ? zineList[zLb] : '', zineLbCount: zLb != null ? `${zLb + 1} / ${zineList.length}` : '',
+      zineLbClose: () => this.setState({ zineLb: null }), zineLbPrev: zGo(-1), zineLbNext: zGo(1), zineStop: (e) => e.stopPropagation(),
+    };
+    this._photo = { ...lbVals, ...zineLbVals, photos, rokhaPhotos, weddingPhotos, zinePhotos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
     return { ...this._photo, ...this.renderVals2() };
   }
   renderVals2() {
