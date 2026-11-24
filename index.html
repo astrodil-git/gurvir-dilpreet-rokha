@@ -80,7 +80,7 @@
               <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(74,8,8,.9)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="zine-fade-l"></div>
               <div style="display:flex; gap:10px; padding:0 30px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="zine-photo-scroll">
                 <sc-for list="{{ zinePhotos }}" as="zp" hint-placeholder-count="6">
-                  <div onClick="{{ zp.onClick }}" style="flex:0 0 140px; height:186px; border-radius:6px; overflow:hidden; border:2px solid rgba(242,235,224,.25); scroll-snap-align:center; box-shadow:0 2px 10px rgba(0,0,0,.25); cursor:zoom-in">
+                  <div onClick="{{ zp.onClick }}" style="flex:0 0 203px; height:270px; border-radius:6px; overflow:hidden; border:2px solid rgba(242,235,224,.25); scroll-snap-align:center; box-shadow:0 2px 10px rgba(0,0,0,.25); cursor:zoom-in">
                     <img src="{{ zp.src }}" alt="G&amp;D Zine" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; pointer-events:none" />
                   </div>
                 </sc-for>
@@ -136,8 +136,8 @@
             <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="rokha-fade-l"></div>
             <div style="display:flex; gap:10px; padding:0 30px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="rokha-photo-scroll">
               <sc-for list="{{ rokhaPhotos }}" as="rp" hint-placeholder-count="6">
-                <div style="position:relative; flex:0 0 120px; height:160px; border-radius:6px; overflow:hidden; border:2px solid rgba(112,12,12,.35); scroll-snap-align:center; box-shadow:0 2px 8px rgba(27,42,68,.12)">
-                  <img src="{{ rp.src }}" alt="Rokha memories" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ rp.pos }}; transform:scale({{ rp.zoom }}); transform-origin:{{ rp.pos }}; pointer-events:none" />
+                <div onClick="{{ rp.onClick }}" style="position:relative; flex:0 0 174px; height:232px; border-radius:6px; overflow:hidden; border:2px solid rgba(112,12,12,.35); scroll-snap-align:center; box-shadow:0 2px 8px rgba(27,42,68,.12); cursor:zoom-in">
+                  <img src="{{ rp.src }}" alt="Engagement memories" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ rp.pos }}; transform:scale({{ rp.zoom }}); transform-origin:{{ rp.pos }}; pointer-events:none" />
                 </div>
               </sc-for>
             </div>
@@ -152,6 +152,18 @@
             setTimeout(u,500);new MutationObserver(function(){setTimeout(u,100)}).observe(s,{childList:true,subtree:true});
           })();
           </script>
+
+          <sc-if value="{{ engLbOpen }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ engLbClose }}" style="position:fixed; inset:0; z-index:50; background:rgba(12,18,32,.95); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:64px 16px 28px">
+              <button onClick="{{ engLbClose }}" aria-label="Close" style="position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(242,235,224,.35); background:transparent; color:#F2EBE0; font-size:22px; line-height:1; cursor:pointer">&times;</button>
+              <img onClick="{{ engStop }}" src="{{ engLbSrc }}" alt="Engagement" style="display:block; max-width:min(92vw,600px); max-height:76vh; width:auto; height:auto; border-radius:6px" />
+              <div style="display:flex; align-items:center; gap:20px">
+                <button onClick="{{ engLbPrev }}" aria-label="Previous" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&lsaquo;</button>
+                <span style="font-family:'Instrument Serif',serif; font-size:16px; letter-spacing:.12em; color:rgba(242,235,224,.84)">{{ engLbCount }}</span>
+                <button onClick="{{ engLbNext }}" aria-label="Next" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(245,245,220,.6); background:transparent; color:#F5F5DC; font-size:20px; cursor:pointer">&rsaquo;</button>
+              </div>
+            </div>
+          </sc-if>
 
           <div style="margin-top:32px; padding:28px 24px; border-radius:18px; background:rgba(112,12,12,.08); border:1px solid rgba(112,12,12,.2); text-align:center">
             <p style="margin:0; font-family:'Instrument Serif',serif; font-size:28px; color:#700C0C">Now get ready for the wedding weekend</p>
@@ -337,7 +349,7 @@
             <div style="position:absolute; top:0; left:0; bottom:4px; width:48px; background:linear-gradient(to left, transparent, rgba(193,210,220,.85)); pointer-events:none; z-index:1; opacity:0; transition:opacity .3s" id="scroll-fade-l"></div>
           <div style="display:flex; flex-wrap:{{ photoWrap }}; justify-content:{{ photoJustify }}; gap:14px; padding:0 32px 4px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch" id="photo-scroll">
             <sc-for list="{{ photos }}" as="p" hint-placeholder-count="6">
-              <div onClick="{{ p.onClick }}" draggable="{{ p.draggable }}" onDragStart="{{ p.onDragStart }}" onDragOver="{{ p.onDragOver }}" onDrop="{{ p.onDrop }}" style="position:relative; flex:0 0 152px; aspect-ratio:3/4; border-radius:50%; overflow:hidden; border:1px solid rgba(112,12,12,.45); scroll-snap-align:center; cursor:{{ p.cursor }}; opacity:{{ p.opacity }}; touch-action:manipulation">
+              <div onClick="{{ p.onClick }}" draggable="{{ p.draggable }}" onDragStart="{{ p.onDragStart }}" onDragOver="{{ p.onDragOver }}" onDrop="{{ p.onDrop }}" style="position:relative; flex:0 0 220px; aspect-ratio:3/4; border-radius:50%; overflow:hidden; border:1px solid rgba(112,12,12,.45); scroll-snap-align:center; cursor:{{ p.cursor }}; opacity:{{ p.opacity }}; touch-action:manipulation">
                 <img src="{{ p.src }}" alt="Dilpreet and Gurvir" draggable="false" style="display:block; width:100%; height:100%; object-fit:cover; object-position:{{ p.pos }}; transform:scale({{ p.zoom }}); transform-origin:{{ p.pos }}; pointer-events:none" />
                 <sc-if value="{{ p.showNum }}" hint-placeholder-val="{{ false }}">
                   <span style="position:absolute; left:50%; bottom:14px; transform:translateX(-50%); min-width:30px; height:30px; padding:0 6px; border-radius:15px; background:#1B2A44; color:#F2EBE0; font-family:'Instrument Serif',serif; font-size:17px; display:flex; align-items:center; justify-content:center">{{ p.num }}</span>
@@ -503,7 +515,8 @@ class Component extends DCLogic {
         this.setState({ dragFrom: null });
       },
     }));
-    const rokhaPhotos = order.map((n) => ({ src: `assets/p${n}.jpg?v=12`, pos: `${fr(n).x}% ${fr(n).y}%`, zoom: fr(n).z }));
+    const engList = ['assets/engage-01.jpg','assets/engage-02.jpg','assets/engage-03.jpg','assets/engage-04.jpg'];
+    const rokhaPhotos = engList.map((s, i) => ({ src: s, pos: '50% 50%', zoom: 1, onClick: () => this.setState({ engLb: i }) }));
     const zineList = ['assets/zine-01.jpg','assets/zine-02.jpg','assets/zine-03.jpg','assets/zine-04.jpg','assets/zine-05.jpg','assets/zine-06.jpg','assets/zine-07.jpg','assets/zine-08.jpg','assets/zine-09.jpg','assets/zine-10.jpg','assets/zine-11.jpg','assets/zine-12.jpg','assets/zine-13.jpg','assets/zine-14.jpg','assets/zine-15.jpg','assets/zine-16.jpg'];
     const weddingPhotos = zineList.map((s) => ({ src: s, pos: '50% 50%', zoom: 1 }));
     const zinePhotos = zineList.map((s, i) => ({ src: s, onClick: () => this.setState({ zineLb: i }) }));
@@ -513,7 +526,13 @@ class Component extends DCLogic {
       zineLbOpen: zLb != null, zineLbSrc: zLb != null ? zineList[zLb] : '', zineLbCount: zLb != null ? `${zLb + 1} / ${zineList.length}` : '',
       zineLbClose: () => this.setState({ zineLb: null }), zineLbPrev: zGo(-1), zineLbNext: zGo(1), zineStop: (e) => e.stopPropagation(),
     };
-    this._photo = { ...lbVals, ...zineLbVals, photos, rokhaPhotos, weddingPhotos, zinePhotos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
+    const eLb = this.state.engLb != null && this.state.engLb < engList.length ? this.state.engLb : null;
+    const eGo = (d) => (e) => { e.stopPropagation(); this.setState({ engLb: (eLb + d + engList.length) % engList.length }); };
+    const engLbVals = {
+      engLbOpen: eLb != null, engLbSrc: eLb != null ? engList[eLb] : '', engLbCount: eLb != null ? `${eLb + 1} / ${engList.length}` : '',
+      engLbClose: () => this.setState({ engLb: null }), engLbPrev: eGo(-1), engLbNext: eGo(1), engStop: (e) => e.stopPropagation(),
+    };
+    this._photo = { ...lbVals, ...zineLbVals, ...engLbVals, photos, rokhaPhotos, weddingPhotos, zinePhotos, photoWrap: arrange ? "wrap" : "nowrap", photoJustify: arrange ? "center" : "flex-start" };
     return { ...this._photo, ...this.renderVals2() };
   }
   renderVals2() {
